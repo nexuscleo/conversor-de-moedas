@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+        <link href="./img/favicon.png" type="image/png" sizes="16x16" rel="icon">
+        <title>Conversor de Moedas</title>
+    </head>
+
+    <body>
+        <img class="logo" src="./img/moeda-colorida.gif" alt="moeda-animada-logo">
+        <main>
+            <label>Converter <b>de</b>
+                <select>
+                    <option>R$ Real Brasileiro</option>
+                </select>
+            </label>
+
+            <label>Converter <b>para</b>
+                <select class="currency-select">
+                    <option value="real">R$ Real</option>
+                    <option value="dollar">US$ Dólar</option>
+                    <option value="euro">€ Euro</option>
+                    <option value="yuan">¥ Yuan</option>
+                    <option value="bitcoin">₿ Bitcoin</option>
+                </select>
+            </label>
+
+            <label>Valor
+                <input class="input-currency" placeholder="R$ 10.000,00">
+            </label>
+
+            <button class="convert-button">Converter</button>
+
+            <section>
+                <div class="currency-box">
+                    <img class="logo-moeda" src="./img/brasil.png" alt="logo-moeda">
+                    <p class="currency">Real</p>
+                    <p class="currency-value">R$ 0,00</p>
+                </div>
+                <img class="img-cambio" src="./img/transacao-estatica.png" alt="imagem-transacao">
+                
+                <div class="currency-box">
+                    <img class="currency-logo-moeda" src="./img/dollar.png" alt="logo-moeda">
+                    <p class="currency-name">Dollar</p>
+                    <p class="currency-value-converted">$0.00</p>
+                </div>
+            </section>
+        </main>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
