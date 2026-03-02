@@ -70,23 +70,4 @@ function convertCurrency() {
 
 }
 
-//Anima a imagem de transação ao clicar no botão de conversão
-const currencyImg = document.querySelector(".img-cambio");
-convertButton.addEventListener("click", function () {
-    currencyImg.classList.add("fade-out");
-
-    setTimeout(() => {
-        currencyImg.src = "./img/transacao.gif";
-        currencyImg.classList.remove("fade-out");
-    }, 150);
-
-    setTimeout(() => {
-        currencyImg.classList.add("fade-out");
-        setTimeout(() => {
-            currencyImg.src = "./img/transacao-estatica.png";
-            currencyImg.classList.remove("fade-out");
-        }, 150);
-    }, 1500);
-});
-
 convertButton.addEventListener("click", convertCurrency);
