@@ -8,7 +8,7 @@
 
 body {
     background-color: #0c2923;
-    background-image: linear-gradient(315deg, #0f0c29 0%, #302b63 74%, #24243e 100%);
+    background-image: linear-gradient(315deg, #0c2911 0%, #2b6331 74%, #243e29 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -90,7 +90,7 @@ input::-webkit-inner-spin-button {
 button {
     width: 100%;
     height: 50px;
-    background: linear-gradient(90deg, #7b4397 0%, #dc2430 100%); /* Gradiente moderno */
+    background: linear-gradient(90deg, #7b4397 0%, #248cdc 100%); /* Gradiente moderno */
     border: none;
     border-radius: 25px;
     font-size: 18px;
