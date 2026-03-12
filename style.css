@@ -158,3 +158,21 @@ button:active {
 .fade-out {
     opacity: 0;
 }
+
+@media (max-width: 420px) {
+    main {
+        padding: 20px 15px;
+    }
+
+    .logo {
+        width: 60px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    .currency-value, .currency-value-converted {
+        font-size: 18px;
+    }
+}
