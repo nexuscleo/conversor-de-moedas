@@ -1,17 +1,25 @@
 const convertButton = document.querySelector(".convert-button");
 const currencySelect = document.querySelector(".currency-select");
 
-function convertCurrency() {
+async function convertCurrency() {
     const inputCurrencyValue = document.querySelector(".input-currency").value;
     const currencyValueToConvert = document.querySelector(".currency-value");
     const currencyValueConverted = document.querySelector(".currency-value-converted");
     const currencyNameMoeda = document.querySelector(".currency-name");
     const currencyLogoMoeda = document.querySelector(".currency-logo-moeda");
 
-    const dollarToday = 5.25;
-    const euroToday = 6.20;
-    const yuanToday = 0.80;
-    const bitcoinToday = 250000.00;
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,CNY-BRL,BTC-BRL").then(response => response.json());
+
+    const dollarToday = data.USDBRL.high;
+    const euroToday = data.EURBRL.high;
+    const yuanToday = data.CNYBRL.high;
+    const bitcoinToday = data.BTCBRL.high;
+
+    console.log(dollarToday);
+    console.log(euroToday);
+    console.log(yuanToday);
+    console.log(bitcoinToday);
+
 
     if (currencySelect.value === "euro") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
