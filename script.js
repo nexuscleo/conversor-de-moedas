@@ -29,6 +29,13 @@ const CURRENCIES = {
         locale: "en-US",
         currency: "BTC",
         apiKey: "BTCBRL"
+    },
+    real: {
+        name: "Real",
+        logo: "./img/brasil.png",
+        locale: "pt-BR",
+        currency: "BRL",
+        apiKey: "BRL"
     }
 };
 
