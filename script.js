@@ -70,4 +70,5 @@ function convertCurrency() {
 
 }
 
+currencySelect.addEventListener("change", convertCurrency);
 convertButton.addEventListener("click", convertCurrency);
