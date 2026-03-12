@@ -1,44 +1,6 @@
 const convertButton = document.querySelector(".convert-button");
 const currencySelect = document.querySelector(".currency-select");
 
-const CURRENCIES = {
-    dollar: {
-        name: "Dólar Americano",
-        logo: "./img/dollar.png",
-        locale: "en-US",
-        currency: "USD",
-        apiKey: "USDBRL"
-    },
-    euro: {
-        name: "Euro",
-        logo: "./img/euro.png",
-        locale: "de-DE",
-        currency: "EUR",
-        apiKey: "EURBRL"
-    },
-    yuan: {
-        name: "Yuan",
-        logo: "./img/yuan.png",
-        locale: "zh-CN",
-        currency: "CNY",
-        apiKey: "CNYBRL"
-    },
-    bitcoin: {
-        name: "Bitcoin",
-        logo: "./img/bitcoin.png",
-        locale: "en-US",
-        currency: "BTC",
-        apiKey: "BTCBRL"
-    },
-    real: {
-        name: "Real",
-        logo: "./img/brasil.png",
-        locale: "pt-BR",
-        currency: "BRL",
-        apiKey: "BRL"
-    }
-};
-
 async function convertCurrency() {
     const inputCurrencyValue = document.querySelector(".input-currency").value;
     const currencyValueToConvert = document.querySelector(".currency-value");
@@ -46,24 +8,68 @@ async function convertCurrency() {
 
     const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,CNY-BRL,BTC-BRL").then(response => response.json());
 
-    const selectedCurrencyValue = currencySelect.value;
-    const currencyData = CURRENCIES[selectedCurrencyValue];
-    const currencyRate = data[currencyData.apiKey].high;
+    const dollarToday = data.USDBRL.high;
+    const euroToday = data.EURBRL.high;
+    const yuanToday = data.CNYBRL.high;
+    const bitcoinToday = data.BTCBRL.high;
+
+    const currencyNameMoeda = document.querySelector(".currency-name");
+    const currencyLogoMoeda = document.querySelector(".currency-logo-moeda");
+
+    if (currencySelect.value == "dollar") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputCurrencyValue / dollarToday);
+
+        currencyNameMoeda.innerHTML = "Dólar Americano";
+        currencyLogoMoeda.src = "./img/dollar.png";
+    }
+
+    if (currencySelect.value == "euro") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputCurrencyValue / euroToday);
+
+        currencyNameMoeda.innerHTML = "Euro";
+        currencyLogoMoeda.src = "./img/euro.png";
+    }
+
+    if (currencySelect.value == "yuan") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("zh-CN", {
+            style: "currency",
+            currency: "CNY"
+        }).format(inputCurrencyValue / yuanToday);
+
+        currencyNameMoeda.innerHTML = "Yuan";
+        currencyLogoMoeda.src = "./img/yuan.png";
+    }
+
+    if (currencySelect.value == "bitcoin") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "BTC"
+        }).format(inputCurrencyValue / bitcoinToday);
+
+        currencyNameMoeda.innerHTML = "Bitcoin";
+        currencyLogoMoeda.src = "./img/bitcoin.png";
+    }
+
+    if (currencySelect.value == "real") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(inputCurrencyValue);
+
+        currencyNameMoeda.innerHTML = "Real";
+        currencyLogoMoeda.src = "./img/brasil.png";
+    }
 
     currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
     }).format(inputCurrencyValue);
-
-    currencyValueConverted.innerHTML = new Intl.NumberFormat(currencyData.locale, {
-        style: "currency",
-        currency: currencyData.currency
-    }).format(inputCurrencyValue / currencyRate);
-
-    const currencyNameMoeda = document.querySelector(".currency-name");
-    const currencyLogoMoeda = document.querySelector(".currency-logo-moeda");
-    currencyNameMoeda.innerHTML = currencyData.name;
-    currencyLogoMoeda.src = currencyData.logo;
 }
 
 currencySelect.addEventListener("change", convertCurrency);
