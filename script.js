@@ -13,6 +13,7 @@ async function convertCurrency() {
     const euroToday = data.EURBRL.high;
     const yuanToday = data.CNYBRL.high;
     const bitcoinToday = data.BTCBRL.high;
+    const realToday = data.BRL.high;
 
     const currencyNameMoeda = document.querySelector(".currency-name");
     const currencyLogoMoeda = document.querySelector(".currency-logo-moeda");
@@ -113,7 +114,7 @@ async function convertCurrency() {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL"
-        }).format(inputCurrencyValue);
+        }).format(realToday);
 
         currency.innerHTML = "Real";
         logoMoeda.src = "./img/brasil.png";
