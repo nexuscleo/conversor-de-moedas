@@ -20,62 +20,11 @@ async function convertCurrency() {
     const currency = document.querySelector(".currency");
     const logoMoeda = document.querySelector(".logo-moeda");
 
-    if (currencySelect.value == "dollar") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(dollarToday);
-
-        currencyNameMoeda.innerHTML = "Dólar Americano";
-        currencyLogoMoeda.src = "./img/dollar.png";
-    }
-
-    if (currencySelect.value == "euro") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(euroToday);
-
-        currencyNameMoeda.innerHTML = "Euro";
-        currencyLogoMoeda.src = "./img/euro.png";
-    }
-
-    if (currencySelect.value == "yuan") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("zh-CN", {
-            style: "currency",
-            currency: "CNY"
-        }).format(yuanToday);
-
-        currencyNameMoeda.innerHTML = "Yuan";
-        currencyLogoMoeda.src = "./img/yuan.png";
-    }
-
-    if (currencySelect.value == "bitcoin") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "BTC"
-        }).format(bitcoinToday);
-
-        currencyNameMoeda.innerHTML = "Bitcoin";
-        currencyLogoMoeda.src = "./img/bitcoin.png";
-    }
-
-    if (currencySelect.value == "real") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        }).format(realToday);
-
-        currencyNameMoeda.innerHTML = "Real";
-        currencyLogoMoeda.src = "./img/brasil.png";
-    }
-    
     if (currencySelectFrom.value == "dollar") {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(inputCurrencyValue * dollarToday);
-        console.log(currencyValueToConvert.value);
+        }).format(dollarToday);
 
         currency.innerHTML = "Dólar Americano";
         logoMoeda.src = "./img/dollar.png";
@@ -85,7 +34,7 @@ async function convertCurrency() {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(inputCurrencyValue * euroToday);
+        }).format(euroToday);
 
         currency.innerHTML = "Euro";
         logoMoeda.src = "./img/euro.png";
@@ -95,7 +44,7 @@ async function convertCurrency() {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("zh-CN", {
             style: "currency",
             currency: "CNY"
-        }).format(inputCurrencyValue * yuanToday);
+        }).format(yuanToday);
 
         currency.innerHTML = "Yuan";
         logoMoeda.src = "./img/yuan.png";
@@ -105,7 +54,7 @@ async function convertCurrency() {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "BTC"
-        }).format(inputCurrencyValue * bitcoinToday);
+        }).format(bitcoinToday);
 
         currency.innerHTML = "Bitcoin";
         logoMoeda.src = "./img/bitcoin.png";
@@ -121,11 +70,63 @@ async function convertCurrency() {
         logoMoeda.src = "./img/brasil.png";
     }
 
+    /* Valores convertidos */
+    if (currencySelect.value == "dollar") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputCurrencyValue * (dollarToday /  currencyValueToConvert.innerHTML));
+
+        currencyNameMoeda.innerHTML = "Dólar Americano";
+        currencyLogoMoeda.src = "./img/dollar.png";
+    }
+
+    if (currencySelect.value == "euro") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputCurrencyValue * (euroToday / currencyValueToConvert.innerHTML));
+
+        currencyNameMoeda.innerHTML = "Euro";
+        currencyLogoMoeda.src = "./img/euro.png";
+    }
+
+    if (currencySelect.value == "yuan") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("zh-CN", {
+            style: "currency",
+            currency: "CNY"
+        }).format(inputCurrencyValue * (yuanToday / currencyValueToConvert.innerHTML));
+
+        currencyNameMoeda.innerHTML = "Yuan";
+        currencyLogoMoeda.src = "./img/yuan.png";
+    }
+
+    if (currencySelect.value == "bitcoin") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "BTC"
+        }).format(inputCurrencyValue * (bitcoinToday / currencyValueToConvert.innerHTML));
+
+        currencyNameMoeda.innerHTML = "Bitcoin";
+        currencyLogoMoeda.src = "./img/bitcoin.png";
+    }
+
+    if (currencySelect.value == "real") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(inputCurrencyValue * (realToday / currencyValueToConvert.innerHTML));
+
+        currencyNameMoeda.innerHTML = "Real";
+        currencyLogoMoeda.src = "./img/brasil.png";
+    }
+
     /*currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
     }).format(inputCurrencyValue);*/
 }
 
+currencySelectFrom.addEventListener("change", convertCurrency);
 currencySelect.addEventListener("change", convertCurrency);
 convertButton.addEventListener("click", convertCurrency);
