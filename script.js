@@ -13,7 +13,7 @@ async function convertCurrency() {
     const euroToday = data.EURBRL.high;
     const yuanToday = data.CNYBRL.high;
     const bitcoinToday = data.BTCBRL.high;
-    const realToday = data.BRL.high;
+    const realToday = 1;
 
     const currencyNameMoeda = document.querySelector(".currency-name");
     const currencyLogoMoeda = document.querySelector(".currency-logo-moeda");
@@ -24,7 +24,7 @@ async function convertCurrency() {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(inputCurrencyValue / dollarToday);
+        }).format(dollarToday);
 
         currencyNameMoeda.innerHTML = "Dólar Americano";
         currencyLogoMoeda.src = "./img/dollar.png";
@@ -34,7 +34,7 @@ async function convertCurrency() {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(inputCurrencyValue / euroToday);
+        }).format(euroToday);
 
         currencyNameMoeda.innerHTML = "Euro";
         currencyLogoMoeda.src = "./img/euro.png";
@@ -44,7 +44,7 @@ async function convertCurrency() {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("zh-CN", {
             style: "currency",
             currency: "CNY"
-        }).format(inputCurrencyValue / yuanToday);
+        }).format(yuanToday);
 
         currencyNameMoeda.innerHTML = "Yuan";
         currencyLogoMoeda.src = "./img/yuan.png";
@@ -54,7 +54,7 @@ async function convertCurrency() {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "BTC"
-        }).format(inputCurrencyValue / bitcoinToday);
+        }).format(bitcoinToday);
 
         currencyNameMoeda.innerHTML = "Bitcoin";
         currencyLogoMoeda.src = "./img/bitcoin.png";
@@ -64,17 +64,18 @@ async function convertCurrency() {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL"
-        }).format(inputCurrencyValue);
+        }).format(realToday);
 
         currencyNameMoeda.innerHTML = "Real";
         currencyLogoMoeda.src = "./img/brasil.png";
     }
-
+    
     if (currencySelectFrom.value == "dollar") {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(dollarToday);
+        }).format(inputCurrencyValue * dollarToday);
+        console.log(currencyValueToConvert.value);
 
         currency.innerHTML = "Dólar Americano";
         logoMoeda.src = "./img/dollar.png";
@@ -84,7 +85,7 @@ async function convertCurrency() {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(euroToday);
+        }).format(inputCurrencyValue * euroToday);
 
         currency.innerHTML = "Euro";
         logoMoeda.src = "./img/euro.png";
@@ -94,7 +95,7 @@ async function convertCurrency() {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("zh-CN", {
             style: "currency",
             currency: "CNY"
-        }).format(yuanToday);
+        }).format(inputCurrencyValue * yuanToday);
 
         currency.innerHTML = "Yuan";
         logoMoeda.src = "./img/yuan.png";
@@ -104,7 +105,7 @@ async function convertCurrency() {
         currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "BTC"
-        }).format(bitcoinToday);
+        }).format(inputCurrencyValue * bitcoinToday);
 
         currency.innerHTML = "Bitcoin";
         logoMoeda.src = "./img/bitcoin.png";
