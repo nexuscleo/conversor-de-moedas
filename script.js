@@ -24,7 +24,7 @@ async function convertCurrency() {
         valorMoedaDe.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(euroDollar);
+        }).format(valorEntrada);
 
         nomeMoedaDe.innerHTML = "Dólar Americano";
         logoMoedaDe.src = "./img/dollar.png";
