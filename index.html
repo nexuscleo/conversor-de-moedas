@@ -15,7 +15,7 @@
         <main>
             <div class="input-group">
                 <label>Converter <b>de</b></label>
-                <select class="currency-select-from">
+                <select class="converter-de">
                     <option value="real">R$ Real</option>
                     <option value="euro">€ Euro</option>
                     <option value="yuan">¥ Yuan</option>
@@ -26,7 +26,7 @@
 
             <div class="input-group">
                 <label>Converter <b>para</b></label>
-                <select class="currency-select">
+                <select class="converter-para">
                     <option value="dollar">US$ Dólar</option>
                     <option value="real">R$ Real</option>
                     <option value="euro">€ Euro</option>
@@ -37,23 +37,23 @@
 
             <div class="input-group">
                 <label>Valor</label>
-                <input class="input-currency" placeholder="R$ 10.000,00" type="number">
+                <input class="valor-entrada" placeholder="R$ 10.000,00" type="number">
             </div>
 
-            <button class="convert-button">Converter</button>
+            <button class="botao-converter">Converter</button>
 
             <section class="result-container">
-                <div class="currency-box">
-                    <img class="logo-moeda" src="./img/brasil.png" alt="logo-moeda">
-                    <p class="currency">Real</p>
-                    <p class="currency-value">R$ 0,00</p>
+                <div class="moeda-box">
+                    <img class="logo-moeda-de" src="./img/brasil.png" alt="logo-moeda">
+                    <p class="nome-moeda-de">Real</p>
+                    <p class="valor-moeda-de">R$ 0,00</p>
                 </div>
                 <img class="img-cambio" src="./img/transacao-estatica.png" alt="imagem-transacao">
                 
-                <div class="currency-box">
-                    <img class="currency-logo-moeda" src="./img/dollar.png" alt="logo-moeda">
-                    <p class="currency-name">Dollar</p>
-                    <p class="currency-value-converted">$0.00</p>
+                <div class="moeda-box">
+                    <img class="logo-moeda-para" src="./img/dollar.png" alt="logo-moeda">
+                    <p class="nome-moeda-para">Dollar</p>
+                    <p class="valor-moeda-para">$0.00</p>
                 </div>
             </section>
         </main>

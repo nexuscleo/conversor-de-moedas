@@ -1,11 +1,11 @@
-const convertButton = document.querySelector(".convert-button");
-const currencySelect = document.querySelector(".currency-select");
-const currencySelectFrom = document.querySelector(".currency-select-from");
+const botaoConverter = document.querySelector(".botao-converter");
+const converterDe = document.querySelector(".converter-de");
+const converterPara = document.querySelector(".converter-para");
 
 async function convertCurrency() {
-    const inputCurrencyValue = document.querySelector(".input-currency").value;
-    const currencyValueToConvert = document.querySelector(".currency-value");
-    const currencyValueConverted = document.querySelector(".currency-value-converted");
+    const valorEntrada = document.querySelector(".valor-entrada").value;
+    const valorMoedaDe = document.querySelector(".valor-moeda-de");
+    const valorMoedaPara = document.querySelector(".valor-moeda-para");
 
     const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,CNY-BRL,BTC-BRL").then(response => response.json());
 
@@ -15,110 +15,110 @@ async function convertCurrency() {
     const bitcoinToday = data.BTCBRL.high;
     const realToday = 1;
 
-    const currencyNameMoeda = document.querySelector(".currency-name");
-    const currencyLogoMoeda = document.querySelector(".currency-logo-moeda");
-    const currency = document.querySelector(".currency");
-    const logoMoeda = document.querySelector(".logo-moeda");
+    const nomeMoedaDe = document.querySelector(".nome-moeda-de");
+    const logoMoedaDe = document.querySelector(".logo-moeda-de");
+    const nomeMoedaPara = document.querySelector(".nome-moeda-para");
+    const logoMoedaPara = document.querySelector(".logo-moeda-para");
 
-    if (currencySelectFrom.value == "dollar") {
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+    if (converterDe.value == "dollar") {
+        valorMoedaDe.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(dollarToday);
+        }).format(euroDollar);
 
-        currency.innerHTML = "Dólar Americano";
-        logoMoeda.src = "./img/dollar.png";
+        nomeMoedaDe.innerHTML = "Dólar Americano";
+        logoMoedaDe.src = "./img/dollar.png";
     }
 
-        if (currencySelectFrom.value == "euro") {
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+        if (converterDe.value == "euro") {
+        valorMoedaDe.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(euroToday);
+        }).format(valorEntrada);
 
-        currency.innerHTML = "Euro";
-        logoMoeda.src = "./img/euro.png";
+        nomeMoedaDe.innerHTML = "Euro";
+        logoMoedaDe.src = "./img/euro.png";
     }
 
-    if (currencySelectFrom.value == "yuan") {
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("zh-CN", {
+    if (converterDe.value == "yuan") {
+        valorMoedaDe.innerHTML = new Intl.NumberFormat("zh-CN", {
             style: "currency",
             currency: "CNY"
-        }).format(yuanToday);
+        }).format(valorEntrada);
 
-        currency.innerHTML = "Yuan";
-        logoMoeda.src = "./img/yuan.png";
+        nomeMoedaDe.innerHTML = "Yuan";
+        logoMoedaDe.src = "./img/yuan.png";
     }
 
-    if (currencySelectFrom.value == "bitcoin") {
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+    if (converterDe.value == "bitcoin") {
+        valorMoedaDe.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "BTC"
-        }).format(bitcoinToday);
+        }).format(valorEntrada);
 
-        currency.innerHTML = "Bitcoin";
-        logoMoeda.src = "./img/bitcoin.png";
+        nomeMoedaDe.innerHTML = "Bitcoin";
+        logoMoedaDe.src = "./img/bitcoin.png";
     }
 
-    if (currencySelectFrom.value == "real") {
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+    if (converterDe.value == "real") {
+        valorMoedaDe.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL"
-        }).format(realToday);
+        }).format(valorEntrada);
 
-        currency.innerHTML = "Real";
-        logoMoeda.src = "./img/brasil.png";
+        nomeMoedaDe.innerHTML = "Real";
+        logoMoedaDe.src = "./img/brasil.png";
     }
 
     /* Valores convertidos */
-    if (currencySelect.value == "dollar") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+    if (converterPara.value == "dollar") {
+        valorMoedaPara.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(inputCurrencyValue * (dollarToday /  currencyValueToConvert.innerHTML));
+        }).format(valorEntrada / dollarToday);
 
-        currencyNameMoeda.innerHTML = "Dólar Americano";
-        currencyLogoMoeda.src = "./img/dollar.png";
+        nomeMoedaPara.innerHTML = "Dólar Americano";
+        logoMoedaPara.src = "./img/dollar.png";
     }
 
-    if (currencySelect.value == "euro") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+    if (converterPara.value == "euro") {
+        valorMoedaPara.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(inputCurrencyValue * (euroToday / currencyValueToConvert.innerHTML));
+        }).format(valorEntrada / euroToday);
 
-        currencyNameMoeda.innerHTML = "Euro";
-        currencyLogoMoeda.src = "./img/euro.png";
+        nomeMoedaPara.innerHTML = "Euro";
+        logoMoedaPara.src = "./img/euro.png";
     }
 
-    if (currencySelect.value == "yuan") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("zh-CN", {
+    if (converterPara.value == "yuan") {
+        valorMoedaPara.innerHTML = new Intl.NumberFormat("zh-CN", {
             style: "currency",
             currency: "CNY"
-        }).format(inputCurrencyValue * (yuanToday / currencyValueToConvert.innerHTML));
+        }).format(valorEntrada / yuanToday);
 
-        currencyNameMoeda.innerHTML = "Yuan";
-        currencyLogoMoeda.src = "./img/yuan.png";
+        nomeMoedaPara.innerHTML = "Yuan";
+        logoMoedaPara.src = "./img/yuan.png";
     }
 
-    if (currencySelect.value == "bitcoin") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+    if (converterPara.value == "bitcoin") {
+        valorMoedaPara.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "BTC"
-        }).format(inputCurrencyValue * (bitcoinToday / currencyValueToConvert.innerHTML));
+        }).format(valorEntrada / bitcoinToday);
 
-        currencyNameMoeda.innerHTML = "Bitcoin";
-        currencyLogoMoeda.src = "./img/bitcoin.png";
+        nomeMoedaPara.innerHTML = "Bitcoin";
+        logoMoedaPara.src = "./img/bitcoin.png";
     }
 
-    if (currencySelect.value == "real") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+    if (converterPara.value == "real") {
+        valorMoedaPara.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL"
-        }).format(inputCurrencyValue * (realToday / currencyValueToConvert.innerHTML));
+        }).format(valorEntrada / realToday);
 
-        currencyNameMoeda.innerHTML = "Real";
-        currencyLogoMoeda.src = "./img/brasil.png";
+        nomeMoedaPara.innerHTML = "Real";
+        logoMoedaPara.src = "./img/brasil.png";
     }
 
     /*currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
@@ -127,6 +127,6 @@ async function convertCurrency() {
     }).format(inputCurrencyValue);*/
 }
 
-currencySelectFrom.addEventListener("change", convertCurrency);
-currencySelect.addEventListener("change", convertCurrency);
-convertButton.addEventListener("click", convertCurrency);
+converterDe.addEventListener("change", convertCurrency);
+converterPara.addEventListener("change", convertCurrency);
+botaoConverter.addEventListener("click", convertCurrency);

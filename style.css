@@ -125,14 +125,14 @@ button:active {
     mix-blend-mode: screen;
 }
 
-.currency-box {
+.moeda-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
 }
 
-.logo-moeda, .currency-logo-moeda {
+.logo-moeda-de, .logo-moeda-para {
     display: block;
     margin: 0 auto 8px;
     width: 48px;
@@ -141,13 +141,13 @@ button:active {
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
 }
 
-.currency, .currency-name {
+.nome-moeda-de, .nome-moeda-para {
     font-size: 14px;
     color: #b3b3b3;
     margin-bottom: 5px;
 }
 
-.currency-value, .currency-value-converted {
+.valor-moeda-de, .valor-moeda-para {
     font-family: 'Orbitron', sans-serif;
     font-size: 20px;
     font-weight: 600;
