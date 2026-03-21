@@ -39,10 +39,8 @@ async function converterMoeda() {
     const valorEntradaRaw = document.querySelector(".valor-entrada").value;
     const valorEntrada = parseFloat(valorEntradaRaw);
     
-    if (isNaN(valorEntrada) || valorEntrada <= 0) {
-        alert("Por favor, insira um valor válido.");
+    if (isNaN(valorEntrada) || valorEntrada <= 0)
         return;
-    }
     
     const valorMoedaDe = document.querySelector(".valor-moeda-de");
     const valorMoedaPara = document.querySelector(".valor-moeda-para");
@@ -60,13 +58,15 @@ async function converterMoeda() {
         try {
             const par = `${configDe.code}-${configPara.code}`;
             const url = `https://economia.awesomeapi.com.br/last/${par}`;
+            
             const response = await fetch(url);
 
             if (!response.ok) {
-                throw new Error("Par de não suportado, erro na API");
+                throw new Error("Par de moedas não suportado, erro na API");
             }
             const data = await response.json();
-            const chaveApi = `${configDe.code}${configPara.cade}`;
+
+            const chaveApi = `${configDe.code}${configPara.code}`;
             cotacao = parseFloat(data[chaveApi].high);
         }
         catch (error) {
