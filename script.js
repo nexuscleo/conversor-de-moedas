@@ -36,6 +36,9 @@ const moedasConfig = {
 };
 
 async function converterMoeda() {
+    botaoConverter.classList.add("loading");
+    botaoConverter.disabled = true;
+    
     const valorEntradaRaw = document.querySelector(".valor-entrada").value;
     const valorEntrada = parseFloat(valorEntradaRaw);
     
@@ -54,7 +57,7 @@ async function converterMoeda() {
 
     let cotacao = 1;
 
-    if (configDe.De !== configPara.code) {
+    if (configDe.code !== configPara.code) {
         try {
             const par = `${configDe.code}-${configPara.code}`;
             const url = `https://economia.awesomeapi.com.br/last/${par}`;
@@ -73,6 +76,11 @@ async function converterMoeda() {
             console.error(error);
             alert("Não foi possível obter a cotação para as moedas selecionadas.");
             return;
+        }
+
+        finally {
+        botaoConverter.classList.remove("loading");
+        botaoConverter.disabled = false;
         }
     }
 
