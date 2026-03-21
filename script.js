@@ -39,9 +39,10 @@ async function converterMoeda() {
     const valorEntradaRaw = document.querySelector(".valor-entrada").value;
     const valorEntrada = parseFloat(valorEntradaRaw);
     
-    if (isNaN(valorEntrada) || valorEntrada <= 0)
+    if (isNaN(valorEntrada) || valorEntrada <= 0) {
         alert("Por favor, insira um valor válido.");
         return;
+    }
     
     const valorMoedaDe = document.querySelector(".valor-moeda-de");
     const valorMoedaPara = document.querySelector(".valor-moeda-para");
