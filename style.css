@@ -18,7 +18,7 @@
 }
 
 body {
-    background: var(--bg-grdadient);
+    background: var(--bg-gradient);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -29,9 +29,10 @@ body {
 }
 
 .logo {
-    width: 80px;
+    width: 100px;
     margin-bottom: 25px;
-    filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0px 4px 15px rgba(255, 255, 0, 0.5));
+    mix-blend-mode: multiply;
 }
 
 main {
@@ -161,6 +162,12 @@ select:focus, input:focus {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.valor-entrada::-webkit-outer-spin-button,
+.valor-entrada::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 @keyframes fadeIn {
