@@ -2,6 +2,7 @@ const botaoConverter = document.querySelector(".botao-converter");
 const converterDe = document.querySelector(".converter-de");
 const converterPara = document.querySelector(".converter-para");
 
+// Configurações para cada moeda, incluindo código, nome, localidade para formatação e imagem
 const moedasConfig = {
     "real": {
         code: "BRL",
@@ -35,6 +36,7 @@ const moedasConfig = {
     }
 };
 
+// Função para converter a moeda selecionada, obtendo a cotação atual da API e formatando os valores de acordo com a localidade
 async function converterMoeda() {
     botaoConverter.classList.add("loading");
     botaoConverter.disabled = true;
